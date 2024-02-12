@@ -380,3 +380,19 @@ void generator::gen()
 	free(input_audio_data);
 	free(output_audio_data);
 }
+
+void generator::msg(const pl_t& pl) {
+
+
+  stringstream ss;
+  ss << hex << pl.get_address();
+  sc_uint<8> val = *((sc_uint<8>*)pl.get_data_ptr());
+	string cmd  = pl.get_command() == TLM_READ_COMMAND ? "read  " : "write ";
+	string msg = cmd + "val: " + to_string((int)val) + " adr: " + ss.str();
+	msg += " @ " + sc_time_stamp().to_string();
+
+	SC_REPORT_INFO("GENERATOR", msg.c_str());
+
+
+
+}

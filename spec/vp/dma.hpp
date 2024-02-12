@@ -30,6 +30,7 @@ protected:
 	typedef tlm::tlm_base_protocol_types::tlm_payload_type pl_t;
 	void b_transport(pl_t &, sc_core::sc_time &);
 	void dm();
+  void msg(const pl_t&);
 };
 
 #endif

@@ -61,7 +61,7 @@ void dma::dm()
 		cout << "*******INPUT_DATA in DMA*****" << endl;
 		for (int i = 0; i < 16; i++)
 		{
-			printf("%d: %02d\t", i, buffer[i]);
+			printf("%d: %02x\t", i, buffer[i]);
 		}
 		cout << endl;
 		pl1.set_address(saddr);
@@ -143,4 +143,20 @@ void dma::b_transport(pl_t &pl, sc_core::sc_time &offset)
 		break;
 		offset += sc_time(10, SC_NS);
 	}
+}
+
+void dma::msg(const pl_t& pl) {
+
+
+  stringstream ss;
+  ss << hex << pl.get_address();
+  sc_uint<8> val = *((sc_uint<8>*)pl.get_data_ptr());
+	string cmd  = pl.get_command() == TLM_READ_COMMAND ? "read  " : "write ";
+	string msg = cmd + "val: " + to_string((int)val) + " adr: " + ss.str();
+	msg += " @ " + sc_time_stamp().to_string();
+
+	SC_REPORT_INFO("DMA", msg.c_str());
+
+
+
 }

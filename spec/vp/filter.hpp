@@ -40,6 +40,7 @@ protected:
     sc_dt::sc_uint<2> ctrl = 0;
     typedef tlm::tlm_base_protocol_types::tlm_payload_type pl_t;
     void b_transport(pl_t &, sc_core::sc_time &);
+    void msg(const pl_t&);
 };
 
 #endif

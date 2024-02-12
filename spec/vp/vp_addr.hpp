@@ -5,7 +5,7 @@
 #include "memory.hpp"
 #include "dma.hpp"
 #include "filter.hpp"
-
+#include "timer.hpp"
 #include <systemc>
 
 const sc_dt::uint64 VP_ADDR_MEM = 0x10000000;
@@ -21,5 +21,11 @@ const sc_dt::uint64 VP_ADDR_FILTER = 0x50000000;
 const sc_dt::uint64 VP_ADDR_FILTER_COEFF = VP_ADDR_FILTER + FILTER_COEFF;
 const sc_dt::uint64 VP_ADDR_FILTER_CSR = VP_ADDR_FILTER + FILTER_CSR;
 const sc_dt::uint64 VP_ADDR_FILTER_H = 0x600000FF;
+const sc_dt::uint64 VP_ADDR_TIMER = 0x43D00000;
+const sc_dt::uint64 VP_ADDR_TIMER_CFG = VP_ADDR_TIMER + TIMER_CFG;
+const sc_dt::uint64 VP_ADDR_TIMER_CNT = VP_ADDR_TIMER + TIMER_CNT;
+const sc_dt::uint64 VP_ADDR_TIMER_RLD = VP_ADDR_TIMER + TIMER_RLD;
+const sc_dt::uint64 VP_ADDR_TIMER_H = 0x43D00004;
+
 
 #endif

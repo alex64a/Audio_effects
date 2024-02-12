@@ -12,4 +12,4 @@ run:
 .PHONY: clean
 clean:
 	rm -f main
-	rm -f filtered_data.txt
+	rm -f output.txt
