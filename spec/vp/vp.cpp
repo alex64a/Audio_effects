@@ -24,14 +24,14 @@ vp::vp(sc_module_name name) : sc_module(name), gen(NULL), ic(NULL), mem(NULL), d
   s_gen.register_b_transport(this, &vp::b_transport);
 //	s_cpu.register_b_transport(this, &vp::b_transport);
 
-
-  t->soc.bind(ic->s_timer);
+ic->s_timer.bind(t->soc);
+  //t->soc.bind(ic->s_timer);
   gen->isoc.bind(ic->s_gen);
   gen->gen_isoc.bind(mem->tsoc);
   ic->s_filter.bind(filter_ip->filter_tsoc);
   ic->s_dma.bind(dm->dma_tsoc);
 //  ic->s_timer.bind(t->soc);
-  dm->dma_isoc(mem->mem_tsoc);
+  dm->dma_isoc.bind(mem->mem_tsoc);
   dm->wr_port(*filter_ip);
   dm->rd_port(*filter_ip);
 tlm_global_quantum::instance().set(sc_time(10, SC_NS));
