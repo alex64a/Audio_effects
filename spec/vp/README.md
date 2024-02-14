@@ -1,4 +1,4 @@
-#INSTRUCTIONS
+# INSTRUCTIONS
 
 To compile this project you must link the SYSTEMC library to your
 installation folder (usually located in /usr/local/system-2.3.1/). 
